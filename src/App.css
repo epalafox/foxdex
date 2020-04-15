@@ -4,6 +4,11 @@ body{
 .App {
   text-align: center;
 }
+.menu
+{
+	-webkit-app-region: drag !important;
+	border-radius: 0 !important;
+}
 
 .App-logo {
   height: 40vmin;
