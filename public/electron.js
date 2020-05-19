@@ -5,7 +5,8 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 let mainWindow;
 function createWindow() {
-	mainWindow = new BrowserWindow({ width: 900, height: 680, frame: false });
+	mainWindow = new BrowserWindow({ icon:'favicon.ico', frame: false, webPreferences: { nodeIntegration: true }, preload: __dirname + '/preload.js',  });
+	mainWindow.maximize();
 	mainWindow.loadURL(
 		isDev
 			? "http://localhost:3000"
@@ -15,9 +16,7 @@ function createWindow() {
 }
 app.on("ready", createWindow);
 app.on("window-all-closed", () => {
-	if (process.platform !== "darwin") {
-		app.quit();
-	}
+	app.quit()
 });
 app.on("activate", () => {
 	if (mainWindow === null) {

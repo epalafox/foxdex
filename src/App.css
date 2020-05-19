@@ -9,7 +9,10 @@ body{
 	-webkit-app-region: drag !important;
 	border-radius: 0 !important;
 }
-
+.right
+{
+	-webkit-app-region: none !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

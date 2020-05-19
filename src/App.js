@@ -92,10 +92,15 @@ class App extends React.Component{
 		this._showEntry = this._showEntry.bind(this)
 		this._close = this._close.bind(this)
 		this.handleItemClick = this.handleItemClick.bind(this)
+		this._closeWindow = this._closeWindow.bind(this)
 	}
 	handleItemClick(e)
 	{
 
+	}
+	_closeWindow()
+	{
+		window.close()
 	}
 	_showEntry(pkm)
 	{
@@ -411,6 +416,7 @@ class App extends React.Component{
 					>
 					Pokedex
 					</Menu.Item>
+					<Menu.Item position='right' onClick={this._closeWindow} color='red'>X</Menu.Item>
 				</Menu> 
 				<Grid>
 					<Grid.Row>
