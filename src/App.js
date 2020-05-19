@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import text from './pkdx.json'
+import pkdx from './pkdx.json'
+import moves from './pkdx.json'
+import abilities from './ability.json'
 import 'semantic-ui-css/semantic.min.css'
 import {Table, Grid, Segment, Header, Transition, Image, Icon, Modal, Menu, Input} from 'semantic-ui-react'
 
@@ -15,7 +17,7 @@ class App extends React.Component{
 		var maxsatk = 0
 		var maxsdef = 0
 		var maxspe = 0
-		text.forEach((pkm) =>
+		pkdx.forEach((pkm) =>
 		{
 			pkm.forme.forEach((forme) =>
 			{
@@ -382,14 +384,6 @@ class App extends React.Component{
 		this.setState({translated: dex})
 	}
 	/*
-				<Menu fixed='top' inverted>
-					<Menu.Item
-					name='pokedex'
-					active={true}
-					onClick={this.handleItemClick}
-					>
-					Pokedex
-					</Menu.Item>
 
 					<Menu.Item
 					name='abilitydex'
@@ -403,8 +397,7 @@ class App extends React.Component{
 					onClick={this.handleItemClick}
 					>
 					Movedex
-					</Menu.Item>
-				</Menu> */
+					</Menu.Item>*/
 	render() {
     	const { column, direction } = this.state
 		return (
@@ -417,20 +410,6 @@ class App extends React.Component{
 					onClick={this.handleItemClick}
 					>
 					Pokedex
-					</Menu.Item>
-
-					<Menu.Item
-					name='abilitydex'
-					onClick={this.handleItemClick}
-					>
-					Abilitydex
-					</Menu.Item>
-
-					<Menu.Item
-					name='movedex'
-					onClick={this.handleItemClick}
-					>
-					Movedex
 					</Menu.Item>
 				</Menu> 
 				<Grid>
@@ -574,6 +553,29 @@ class App extends React.Component{
 													{this.state.selected?.abilities?.hidden && 
 														<Table.Cell>
 															{this.state.selected?.abilities?.hidden}
+														</Table.Cell>
+													}
+												</Table.Row>
+												<Table.Row>
+													{this.state.selected?.abilities?.primary && 
+														<Table.Cell>
+															{
+																abilities.find((ability) => ability.name === this.state.selected?.abilities?.primary).text
+															}
+														</Table.Cell>
+													}
+													{this.state.selected?.abilities?.secondary && 
+														<Table.Cell>
+														{
+															abilities.find((ability) => ability.name === this.state.selected?.abilities?.secondary).text
+														}
+														</Table.Cell>
+													}
+													{this.state.selected?.abilities?.hidden && 
+														<Table.Cell>
+														{
+															abilities.find((ability) => ability.name === this.state.selected?.abilities?.hidden).text
+														}
 														</Table.Cell>
 													}
 												</Table.Row>
